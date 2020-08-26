@@ -1,0 +1,35 @@
+{
+    "name": "@iradek/sonet-appskit",
+    "version": "1.0.1",
+    "description": "Set of common libraries helping to create SoNet enabled apps",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iradek/SoNet-AppsKit.git"
+    },
+    "author": "i-Radek Software <iradek@iradek.com>",
+    "keywords": [
+        "sonet",
+        "iradek",
+        "web",
+        "design",
+        "automation",
+        "web",
+        "engine"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iradek/SoNet-AppsKit/issues"
+    },
+    "homepage": "https://github.com/iradek/SoNet-AppsKit#readme",
+    "peerDependencies": {
+        "@angular/common": "^10.0.11",
+        "@angular/core": "^10.0.11"
+    },
+    "dependencies": {
+        "tslib": "^2.0.0"
+    },
+    "main": "karma.conf.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}

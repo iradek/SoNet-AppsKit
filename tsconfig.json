@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/sonet-appskit/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/sonet-appskit/tsconfig.spec.json"
+    }
+]
 }
