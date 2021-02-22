@@ -20,14 +20,19 @@ export class SoNetHttpInterceptor implements HttpInterceptor {
     }
 
     private _invokeRequestInterceptors(request: HttpRequest<any>) {
-        for (const requestInterceptor of this.interceptorService.requestInterceptors) {
-            requestInterceptor.beforeRequest(request);
-        }
+        if (!this._invokeRequestInterceptors.length)
+            return;
+        // for (var i = 0; i < this._invokeResponseInterceptors.length; i++) {
+        //     this._invokeResponseInterceptors[i].beforeRequest(request);
+        // }
+
     }
 
     private _invokeResponseInterceptors(request: HttpRequest<any>) {
-        for (const requestInterceptor of this.interceptorService.responseInterceptors) {
-            requestInterceptor.afterResponse(request);
-        }
+        if (!this._invokeResponseInterceptors.length)
+            return;
+        // for (var i = 0; i < this._invokeResponseInterceptors.length; i++) {
+        //     this._invokeResponseInterceptors(request);
+        // }
     }
 }

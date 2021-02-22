@@ -1,6 +1,6 @@
 {
     "name": "@iradek/sonet-appskit",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Set of common libraries helping to create SoNet enabled apps",
     "repository": {
         "type": "git",
@@ -22,13 +22,19 @@
     },
     "homepage": "https://github.com/iradek/SoNet-AppsKit#readme",
     "peerDependencies": {
-        "@angular/common": "^10.0.11",
-        "@angular/core": "^10.0.11"
+        "@angular/common": "^11.2.1",
+        "@angular/core": "^11.2.1"
     },
     "dependencies": {
         "tslib": "^2.0.0"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "devDependencies": {
+        "@angular/common": "^11.2.1",
+        "@angular/core": "^11.2.1",
+        "rxjs": "^6.5.3",
+        "zone.js": "^0.10.2"
     }
 }
