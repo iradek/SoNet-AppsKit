@@ -10,11 +10,15 @@ import {
 } from '@angular/common/http';
 import { SoNetOAuthService } from './sonet.oAuth.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class OAuthInterceptor implements HttpInterceptor {
     constructor(
-        private oauthService: SoNetOAuthService
-    ) { }
+        private oauthService: SoNetOAuthService      
+    ) {
+        console.log("oAuthService", this);
+     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(this.addToken(request)).pipe(

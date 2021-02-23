@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { SoNetHttpInterceptorService } from './sonet.http.interceptor.service';
 import { tap, finalize } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class SoNetHttpInterceptor implements HttpInterceptor {
 
     constructor(private interceptorService: SoNetHttpInterceptorService) {

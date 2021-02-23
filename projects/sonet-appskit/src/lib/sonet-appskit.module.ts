@@ -25,32 +25,33 @@ import { ISoNetAppsConfig } from './common/sonet.apps.config';
     ],
     //When you import an NgModule, Angular adds the module's service providers (the contents of its providers list) to the application root injector.
     providers: [
-        SoNetApiClient,        
-        SoNetIntegrationService,        
-        SoNetProxy,
-        SoNetOAuthService,
-        SoNetUrlService,
-        SoNetValidationService,
-        SoNetHttpInterceptorService,
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: OAuthInterceptor,
-            deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
-            multi: true
-        },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: SoNetHttpInterceptor,
-            deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
-            multi: true
-        },
-        SoNetConfigService,
         {
             provide: APP_INITIALIZER,
             useFactory: initializeApp,
             deps: [SoNetConfigService],
             multi: true
-        }      
+        },   
+        // SoNetApiClient,        
+        // SoNetIntegrationService,        
+        // SoNetProxy,
+        // SoNetOAuthService,
+        // SoNetUrlService,
+        // SoNetValidationService,
+        // SoNetHttpInterceptorService,
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: OAuthInterceptor,
+        //     deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
+        //     multi: true
+        // },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: SoNetHttpInterceptor,
+        //     deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
+        //     multi: true
+        // },
+        //SoNetConfigService,
+           
     ]
 })
 export class SoNetAppsKitModule { }
@@ -58,5 +59,5 @@ export class SoNetAppsKitModule { }
 const configFilePath = 'assets/sonet.config.json';
 export function initializeApp(configService: SoNetConfigService) {
     var loadMethod = () => configService.loadAsync(configFilePath); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
-    return loadMethod;
+    return loadMethod; 
 }
