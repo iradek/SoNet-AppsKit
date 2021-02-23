@@ -6,7 +6,8 @@ import { tap } from "rxjs/operators";
 
 @Injectable()
 export class SoNetConfigService {
-    static Config: ISoNetAppsConfig;
+
+    static Config: ISoNetAppsConfig = null;
 
     private _internalConfig: ISoNetAppsConfig;
 

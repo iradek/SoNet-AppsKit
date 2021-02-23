@@ -57,5 +57,6 @@ export class SoNetAppsKitModule { }
 
 const configFilePath = 'assets/sonet.config.json';
 export function initializeApp(configService: SoNetConfigService) {
-    return () => configService.loadAsync(configFilePath);
+    var loadMethod = () => configService.loadAsync(configFilePath); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
+    return loadMethod;
 }
