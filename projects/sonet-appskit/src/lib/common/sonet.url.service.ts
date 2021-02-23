@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SoNetConfigService } from './sonet.config.service';
 
 @Injectable({
@@ -9,7 +9,6 @@ export class SoNetUrlService {
     constructor(
         private configService: SoNetConfigService
     ) {
-  
     }
 
     /**

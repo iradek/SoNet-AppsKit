@@ -1,18 +1,11 @@
-import { APP_INITIALIZER, InjectionToken, NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ValidationMessageComponent } from './components/sonet-validation-message.component';
 import { BusyIndicatorComponent } from './components/sonet-busy-indicator.component';
-import { SoNetApiClient } from './common/sonet.apiClient.service';
-import { SoNetIntegrationService } from './common/sonet.intergration.service';
-import { SoNetProxy } from './common/sonet.proxy.service';
 import { SoNetUrlService } from './common/sonet.url.service';
-import { SoNetValidationService } from './common/sonet.validation.service';
 import { OAuthInterceptor } from './common/sonet.oauth.interceptor';
 import { SoNetHttpInterceptor } from './common/sonet.http.interceptor';
-import { SoNetHttpInterceptorService } from './common/sonet.http.interceptor.service';
 import { SoNetConfigService } from './common/sonet.config.service';
-import { SoNetOAuthService } from './common/sonet.oAuth.service';
-import { ISoNetAppsConfig } from './common/sonet.apps.config';
 
 @NgModule({
     declarations: [ValidationMessageComponent, BusyIndicatorComponent],
@@ -28,36 +21,26 @@ import { ISoNetAppsConfig } from './common/sonet.apps.config';
         {
             provide: APP_INITIALIZER,
             useFactory: initializeApp,
-            deps: [SoNetConfigService],
+            deps: [SoNetConfigService, SoNetUrlService],
             multi: true
         },   
-        // SoNetApiClient,        
-        // SoNetIntegrationService,        
-        // SoNetProxy,
-        // SoNetOAuthService,
-        // SoNetUrlService,
-        // SoNetValidationService,
-        // SoNetHttpInterceptorService,
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: OAuthInterceptor,
-        //     deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
-        //     multi: true
-        // },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: SoNetHttpInterceptor,
-        //     deps: [SoNetConfigService], //important for the app setting to load prior to services depedending on it
-        //     multi: true
-        // },
-        //SoNetConfigService,
-           
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: OAuthInterceptor,
+            multi: true
+        },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: SoNetHttpInterceptor,
+            multi: true
+        }           
     ]
 })
-export class SoNetAppsKitModule { }
+export class SoNetAppsKitModule {    
+    
+}
 
-const configFilePath = 'assets/sonet.config.json';
 export function initializeApp(configService: SoNetConfigService) {
-    var loadMethod = () => configService.loadAsync(configFilePath); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
+    var loadMethod = () => configService.loadAsync(SoNetConfigService.ConfigFilePath); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
     return loadMethod; 
 }

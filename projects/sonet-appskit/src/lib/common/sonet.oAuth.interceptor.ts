@@ -17,7 +17,6 @@ export class OAuthInterceptor implements HttpInterceptor {
     constructor(
         private oauthService: SoNetOAuthService      
     ) {
-        console.log("oAuthService", this);
      }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

@@ -22,19 +22,18 @@ export class SoNetHttpInterceptor implements HttpInterceptor {
     }
 
     private _invokeRequestInterceptors(request: HttpRequest<any>) {
-        if (!this._invokeRequestInterceptors.length)
+        if (!this.interceptorService.requestInterceptors.length)
             return;
-        // for (var i = 0; i < this._invokeResponseInterceptors.length; i++) {
-        //     this._invokeResponseInterceptors[i].beforeRequest(request);
-        // }
-
+        for (var i = 0; i < this.interceptorService.requestInterceptors.length; i++) {
+            this.interceptorService.requestInterceptors[i].beforeRequest(request);
+        }
     }
 
     private _invokeResponseInterceptors(request: HttpRequest<any>) {
-        if (!this._invokeResponseInterceptors.length)
+        if (!this.interceptorService.responseInterceptors.length)
             return;
-        // for (var i = 0; i < this._invokeResponseInterceptors.length; i++) {
-        //     this._invokeResponseInterceptors(request);
-        // }
+        for (var i = 0; i < this.interceptorService.responseInterceptors.length; i++) {
+            this._invokeResponseInterceptors(request);
+        }
     }
 }
