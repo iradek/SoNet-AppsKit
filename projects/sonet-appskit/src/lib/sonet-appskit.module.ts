@@ -6,11 +6,13 @@ import { SoNetUrlService } from './common/sonet.url.service';
 import { OAuthInterceptor } from './common/sonet.oauth.interceptor';
 import { SoNetHttpInterceptor } from './common/sonet.http.interceptor';
 import { SoNetConfigService } from './common/sonet.config.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [ValidationMessageComponent, BusyIndicatorComponent],
     imports: [
-        HttpClientModule
+        BrowserModule,
+        HttpClientModule,
     ],
     exports: [
         ValidationMessageComponent,
