@@ -38,7 +38,7 @@ export class AppModule { }
 ## Configuration
 
 *assets/sonet.config.json*
-```json
+```
 {
     "api_baseUrl": "https://[SoNET base Url]",
     "oauth_client_id": "[SoNET Client ID]",
