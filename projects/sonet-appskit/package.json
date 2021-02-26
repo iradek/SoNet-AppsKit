@@ -1,6 +1,6 @@
 {
     "name": "@iradek/sonet-appskit",
-    "version": "1.0.7",
+    "version": "1.0.9",
     "description": "Set of common libraries helping to create SoNet enabled apps.",
     "repository": {
         "type": "git",
