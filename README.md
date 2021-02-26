@@ -38,7 +38,7 @@ export class AppModule { }
 
 ## Configuration
 
-*assets/sonet.config.json*
+*sonet.config.json*
 ```
 {
     "api_baseUrl": "https://[SoNET base Url]",
@@ -51,6 +51,29 @@ export class AppModule { }
     "passwordAlreadyEncrypted": false,
     "logging": false
 }
+```
+To override the location of configuration file: 
+
+*sonetapp.config.ts*
+```ts
+import { Injectable } from "@angular/core";
+import { SoNetConfigService } from "@iradek/sonet-appskit";
+
+@Injectable({ providedIn: 'root' })
+export class SoNetAppConfig extends SoNetConfigService {
+    configFilePath = 'assets/sonet.config.json';
+}
+```
+*\*.module.ts*
+```ts
+import { SoNetAppConfig } from './sonetapp.config';
+
+providers: [
+    {
+      provide: SoNetConfigService,
+      useExisting: SoNetAppConfig    
+    }
+]
 ```
 
 ## SoNET Engine
