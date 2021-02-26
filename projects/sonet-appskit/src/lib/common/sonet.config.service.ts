@@ -43,7 +43,6 @@ export class SoNetConfigService {
     async loadAsync(url: string): Promise<ISoNetAppsConfig> {
         return this.httpClient.get<ISoNetAppsConfig>(url).pipe(tap(
             config => {
-                console.log("loadAsync - loaded config", config);
                 SoNetConfigService.Config = config;
                 this.internalConfig = config;
                 return config;
