@@ -33,7 +33,7 @@ export class SoNetHttpInterceptor implements HttpInterceptor {
         if (!this.interceptorService.responseInterceptors.length)
             return;
         for (var i = 0; i < this.interceptorService.responseInterceptors.length; i++) {
-            this._invokeResponseInterceptors(request);
+            this.interceptorService.responseInterceptors[i].afterResponse(request);
         }
     }
 }
