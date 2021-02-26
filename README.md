@@ -7,6 +7,7 @@ This is a set of common services and components helping to create SoNET enabled 
 ## Compilation
 
 ```bash
+$ npm install
 $ ng build sonet-appskit --prod
 ```
 

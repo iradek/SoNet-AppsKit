@@ -15,7 +15,7 @@ export class SoNetConfigService {
     /**
      * Default path of SoNET configuration file.
      */
-    static ConfigFilePath = 'assets/sonet.config.json';
+    configFilePath = 'assets/sonet.config.json';
 
     /**
      * Static instance of SoNET configuration.
@@ -35,6 +35,12 @@ export class SoNetConfigService {
     get config(): ISoNetAppsConfig {
         return this.internalConfig;
     }
+
+    async loadDefaultAsync() : Promise<ISoNetAppsConfig>  {
+        console.log("loading config file from", this.configFilePath);
+        return await this.loadAsync(this.configFilePath);
+    }
+    
 
     /**
      * Loads SoNET configuration from a file.

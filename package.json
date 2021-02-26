@@ -1,7 +1,7 @@
 {
   "name": "iradek-sonet",
   "version": "0.0.0",
-  "description": "This is a set of common services and components helping to create SoNET enabled apps.",   
+  "description": "This is a set of common services and components helping to create SoNET enabled apps.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -43,6 +43,6 @@ export class SoNetAppsKitModule {
 }
 
 export function initializeApp(configService: SoNetConfigService) {
-    var loadMethod = () => configService.loadAsync(SoNetConfigService.ConfigFilePath); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
+    var loadMethod = () => configService.loadDefaultAsync(); //we need to assign to variable, otherwise --prod will complain with "Lambda not supported"
     return loadMethod; 
 }
