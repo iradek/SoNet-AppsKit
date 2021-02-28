@@ -31,4 +31,8 @@ export interface ISoNetAppsConfig {
 
     /** Whether to enable extra logging to a console that might help diagnose api calls made by this library. Optional. Default: false. */
     logging?: boolean;
+
+    //maximum upload length AFTER base64 encoding in megabytes
+    maxUploadLengthInMegaBytes?: number;
+
 }
